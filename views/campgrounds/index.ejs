@@ -1,0 +1,25 @@
+<% include ../footerHeader/header.ejs %>
+  <div class="container">
+    <header class='jumbotron backImage'>
+      <div class="container container-center">
+        <h1>Welcome to DongHua Edu</h1>
+        <p>View our hand-picked campgrounds from all over the world!</p>
+      </div>
+    </header>
+    <div class="row" style="display: flex; flex-wrap: wrap">
+      <% statuses.forEach((status) => { %>
+        <div class='col-md-3 col-sm-6'>
+          <div class='thumbnail'>
+            <a href='/campgrounds/<%= status._id %>'>
+              <img src='<%= status.image %>'>
+            </a>
+            <div class='caption'>
+              <h4><%= status.name %></h4>
+              <p><%= status.description %></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+<% include ../footerHeader/footer.ejs %>

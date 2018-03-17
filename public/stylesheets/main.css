@@ -1,0 +1,28 @@
+body {
+  background-color: white;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail .caption-full {
+  padding: 8px;
+}
+.backImage {
+  display: flex;
+  background-image: url('https://images.unsplash.com/photo-1489089905289-5c91ae6e2544?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=846c9812a630a29bafc613bd0b3baadb&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  color: white;
+  height: 500px;
+  align-content: center;
+}
+
+.container-center {
+  text-align: center;
+  margin: auto;
+}
