@@ -47,6 +47,18 @@ router.get('/new', isLoggedIn, function (req, res) {
   })
 })
 
+// edit comment
+router.get('/:cmt_id/edit', function (req, res) {
+  var campground_id = req.params.id
+  Comment.findById(req.params.cmt_id, function (err, comment) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.render('comments/edit', { campground_id, comment })
+    }
+  })
+})
+
 // is loggedin func
 function isLoggedIn (req, res, next) {
   if (req.isAuthenticated()) {
