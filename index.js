@@ -9,6 +9,7 @@ var passport = require('passport')
 var LocalStrategy = require('passport-local')
 var expressSession = require('express-session')
 var methodOverride = require('method-override')
+var flash = require('connect-flash')
 // var seedDB = require('./seeds')
 // require routes
 var campgroundRoutes = require('./routes/campgrounds')
@@ -23,6 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
 app.use(express.static(`${__dirname}` + '/public'))
+
+// use flash
+app.use(flash())
 
 // authentication
 app.use(expressSession({
@@ -42,6 +46,8 @@ app.use(methodOverride('_method'))
 // can use currentUser in every ejs
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user
+  res.locals.error = req.flash('error')
+  res.locals.success = req.flash('success')
   next()
 })
 
