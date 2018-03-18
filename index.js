@@ -36,7 +36,10 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+//override method
 app.use(methodOverride('_method'))
+
+// can use currentUser in every ejs
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user
   next()
