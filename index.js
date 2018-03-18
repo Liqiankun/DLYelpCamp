@@ -8,12 +8,16 @@ var User = require('./models/user')
 var passport = require('passport')
 var LocalStrategy = require('passport-local')
 var expressSession = require('express-session')
+var methodOverride = require('method-override')
+// var seedDB = require('./seeds')
 // require routes
 var campgroundRoutes = require('./routes/campgrounds')
 var commentRoutes = require('./routes/comments')
 var authRoutes = require('./routes/index')
 
 mongoose.connect('mongodb://localhost/yelp_camp')
+
+// seedDB()
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -32,6 +36,7 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+app.use(methodOverride('_method'))
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user
   next()

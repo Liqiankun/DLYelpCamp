@@ -9,7 +9,14 @@ router.post('/', isLoggedIn, function (req, res) {
       console.log('err')
       res.redirect(`/campgrounds/${req.params.id}`)
     } else {
-      Comment.create(req.body.comment, function (_err, comment) {
+      var commentParam = {
+        text: req.body.comment.text,
+        author: {
+          id: req.user._id,
+          username: req.user.username
+        }
+      }
+      Comment.create(commentParam, function (_err, comment) {
         if (_err) {
           console.log('err')
           res.redirect(`/campgrounds/${req.params.id}`)
