@@ -16,8 +16,7 @@ var campgroundRoutes = require('./routes/campgrounds')
 var commentRoutes = require('./routes/comments')
 var authRoutes = require('./routes/index')
 
-//mongoose.connect('mongodb://localhost/yelp_camp')
-mongoose.connect('mongodb://david:liqiankun156111@ds223509.mlab.com:23509/yelpcamp')
+mongoose.connect(process.env.databaseURL)
 // seedDB()
 
 app.use(bodyParser.urlencoded({ extended: true }))
