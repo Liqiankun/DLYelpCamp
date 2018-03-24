@@ -56,6 +56,6 @@ app.use(authRoutes)
 app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/comments', commentRoutes)
 
-app.listen(8080, process.env.IP, function () {
+app.listen(process.env.PORT || 5000, process.env.IP, function () {
   console.log('YelpCamp server has started!')
 })
