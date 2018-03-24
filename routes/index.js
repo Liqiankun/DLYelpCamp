@@ -4,7 +4,7 @@ var User = require('../models/user')
 var passport = require('passport')
 
 router.get('/', function (req, res) {
-  res.redirect('campgrounds')
+  res.render('landing')
 })
 
 // ==========
